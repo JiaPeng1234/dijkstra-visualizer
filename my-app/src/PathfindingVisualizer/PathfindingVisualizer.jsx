@@ -20,6 +20,7 @@ export default class PathfindingVisualizer extends Component {
 
   componentDidMount() {
     const nodes = getInitialGrid();
+    // console.log(nodes);
     this.setState({ nodes });
   }
 
@@ -27,31 +28,34 @@ export default class PathfindingVisualizer extends Component {
     const { nodes } = this.state;
     const startNode = nodes[START_NODE_ROW][START_NODE_COL];
     const finishNode = nodes[FINISH_NODE_ROW][FINISH_NODE_COL];
+    // const originalAllNodes = getAllNodes(nodes);
+    // console.log(originalAllNodes);
+    // const allNodesInorder = originalAllNodes.slice();
+    // allNodesInorder[2][2].isVisited = true;
+    // allNodesInorder[3][3].distance = 4;
+    // console.log(allNodesInorder);
+    const visitedNodeInorder = dijkstra(startNode, finishNode, nodes);
     console.log(nodes);
-    // const originalAllNodes = nodes.slice();
-    // const originalAllNodes = JSON.parse(JSON.stringify(nodes));
-    const originalAllNodes = [];
-    for (let i = 0; i < nodes.length; i++) {
-      const row = [];
-      for (let j = 0; j < nodes[0].length; j++) {
-        row.push(nodes[i][j]);
+    for (let i = 0; i < visitedNodeInorder.length; i++) {
+      if (i == visitedNodeInorder.length - 1) {
+        console.log("finished!");
+      } else {
+        setTimeout(() => {
+          const { col, row } = visitedNodeInorder[i];
+          nodes[row][col] = visitedNodeInorder[i];
+          console.log(i);
+          this.setState({ nodes });
+        }, 50 * i);
+        // console.log("hey");
+        // const newNodes = this.state.nodes.slice();
+        // console.log(newNodes);
+        // const newNode = visitedNodeInorder[i];
+        // console.log(originalAllNodes);
+        // document.getElementById(`node-${col}-${row}`)
       }
-      originalAllNodes.push(row);
     }
-    console.log(originalAllNodes);
-    //const visitedNodeInorder = dijkstra(startNode, finishNode, nodes);
-    // for (let i = 0; i < visitedNodeInorder.length; i++) {
-    //   if (i == visitedNodeInorder.length - 1) {
-    //     console.log("finished!");
-    //   } else {
-    //     const { col, row } = visitedNodeInorder[i];
-    //     originalAllNodes[row][col] = visitedNodeInorder[i];
-    //     //console.log(originalAllNodes);
-    //     // document.getElementById(`node-${col}-${row}`)
-    //     setTimeout(this.setState({ nodes: originalAllNodes }), 100);
-    //   }
-    // }
-    // this.setState(aa);
+    // console.log(this.state);
+    // this.setState(this.state.nodes);
   }
 
   testshowVisited() {
@@ -101,6 +105,16 @@ export default class PathfindingVisualizer extends Component {
   }
 }
 
+const getAllNodes = (nodes) => {
+  const allNodesInorder = [];
+  for (const row of nodes) {
+    for (const node of row) {
+      allNodesInorder.push(node);
+    }
+  }
+  return allNodesInorder;
+};
+
 const getInitialGrid = () => {
   const nodes = [];
   for (let row = 0; row < 20; row++) {
@@ -119,6 +133,7 @@ const createNode = (col, row) => {
     col: col,
     row: row,
     value: 1,
+    preciousnode: null,
     isWall: false,
     distance: Infinity,
     isStart: row === START_NODE_ROW && col === START_NODE_COL,
