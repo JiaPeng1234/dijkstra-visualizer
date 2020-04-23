@@ -1,29 +1,56 @@
 .node-container {
   display: inline-grid;
   margin: 0 0 0 0;
-  border: 1px solid gray;
+  border: 1px solid rgba(128, 128, 128, 0.356);
   grid-gap: 0px;
   grid-template-columns: repeat(50, 40px);
   grid-template-rows: repeat(20, 40px);
 }
 
 .node-item {
-  border: 1px solid rgb(31, 103, 219);
+  border: 1px solid white;
+  background-color: rgb(175, 216, 248);
 }
 
 .node-start {
-  border: 1px solid rgb(31, 103, 219);
+  border: 1px solid white;
   background-color: rgb(126, 63, 189);
 }
 
 .node-finish {
-  border: 1px solid rgb(31, 103, 219);
-  background-color: rgb(223, 65, 65);
+  border: 1px solid white;
+  background-color: rgba(223, 65, 65, 0.78);
 }
 
 .node-visited {
-  border: 1px solid rgb(31, 103, 219);
-  background-color: rgba(65, 75, 223, 0.863);
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation-name: visitingNode;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes visitingNode {
+  0% {
+    transform: scale(0.3);
+    background-color: blueviolet;
+    border-radius: 100%;
+  }
+  50% {
+    background-color: rgba(65, 75, 223, 0.863);
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: slateblue;
+  }
+  100% {
+    transform: scale(1);
+    border: 0.1px solid white;
+    background-color: deeppink;
+  }
 }
 /* .two {
   grid-column: 2 / 4;

@@ -28,34 +28,19 @@ export default class PathfindingVisualizer extends Component {
     const { nodes } = this.state;
     const startNode = nodes[START_NODE_ROW][START_NODE_COL];
     const finishNode = nodes[FINISH_NODE_ROW][FINISH_NODE_COL];
-    // const originalAllNodes = getAllNodes(nodes);
-    // console.log(originalAllNodes);
-    // const allNodesInorder = originalAllNodes.slice();
-    // allNodesInorder[2][2].isVisited = true;
-    // allNodesInorder[3][3].distance = 4;
-    // console.log(allNodesInorder);
     const visitedNodeInorder = dijkstra(startNode, finishNode, nodes);
-    console.log(nodes);
+    // console.log(nodes);
     for (let i = 0; i < visitedNodeInorder.length; i++) {
       if (i == visitedNodeInorder.length - 1) {
         console.log("finished!");
       } else {
+        const { col, row } = visitedNodeInorder[i];
         setTimeout(() => {
-          const { col, row } = visitedNodeInorder[i];
-          nodes[row][col] = visitedNodeInorder[i];
-          console.log(i);
-          this.setState({ nodes });
-        }, 50 * i);
-        // console.log("hey");
-        // const newNodes = this.state.nodes.slice();
-        // console.log(newNodes);
-        // const newNode = visitedNodeInorder[i];
-        // console.log(originalAllNodes);
-        // document.getElementById(`node-${col}-${row}`)
+          document.getElementById(`node-${col}-${row}`).className =
+            "node-visited";
+        }, 10 * i);
       }
     }
-    // console.log(this.state);
-    // this.setState(this.state.nodes);
   }
 
   testshowVisited() {
