@@ -22,6 +22,11 @@
   background-color: rgba(223, 65, 65, 0.78);
 }
 
+.node-wall {
+  border: 0;
+  background-color: rgba(14, 19, 88, 0.781);
+}
+
 .node-visited {
   /* animation: name duration timing-function delay iteration-count direction fill-mode; */
   animation-name: visitingNode;
