@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Node from "./Node/Node.jsx";
 import NodeContainer from "./Node/NodeContainer.jsx";
 import "./PathfindingVisualizer.css";
-import { dijkstra } from "./Algorithms/dijkstra.js";
+import { dijkstra, findShortestPath } from "./Algorithms/dijkstra.js";
 // import "./Node/Node.css";
 
 const START_NODE_COL = 15;
@@ -25,9 +25,12 @@ export default class PathfindingVisualizer extends Component {
   }
 
   handleMouseDown(row, col) {
+    console.log(document.getElementById(`node-${col}-${row}`));
     if (this.state.mouseIsClicked) return;
     this.state.mouseIsClicked = true;
     const { nodes } = this.state;
+    console.log(nodes[row][col]);
+    console.log(document.getElementById(`node-${col}-${row}`));
     if (
       document.getElementById(`node-${col}-${row}`).className === "node-wall"
     ) {
@@ -67,8 +70,7 @@ export default class PathfindingVisualizer extends Component {
       nodes[row][col].isWall = !nodes[row][col].isWall;
       document.getElementById(`node-${col}-${row}`).className = "node-wall";
     }
-    // console.log(document.getElementById(`node-${col}-${row}`));
-    // console.log(nodes[row][col]);
+
     // console.log("draw!");
     // console.log(this.state.mouseIsClicked);
   }
@@ -78,9 +80,13 @@ export default class PathfindingVisualizer extends Component {
     const startNode = nodes[START_NODE_ROW][START_NODE_COL];
     const finishNode = nodes[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodeInorder = dijkstra(startNode, finishNode, nodes);
+    const shortestPathNodes = findShortestPath(finishNode);
     for (let i = 0; i < visitedNodeInorder.length; i++) {
       if (i === visitedNodeInorder.length - 1) {
         console.log("finished!");
+        setTimeout(() => {
+          this.animateShortestPath(shortestPathNodes);
+        }, 10 * i);
       } else {
         const { col, row } = visitedNodeInorder[i];
         setTimeout(() => {
@@ -89,8 +95,20 @@ export default class PathfindingVisualizer extends Component {
         }, 10 * i);
       }
     }
+    // this.animateShortestPath(shortestPathNodes);
+
     // console.log(document.getElementById(`node-${17}-${10}`));
     // console.log(nodes[10][17]);
+  }
+
+  animateShortestPath(shortestPathNodes) {
+    for (let i = 0; i < shortestPathNodes.length; i++) {
+      const { col, row } = shortestPathNodes[i];
+      setTimeout(() => {
+        document.getElementById(`node-${col}-${row}`).className =
+          "node-shortestpath";
+      }, 50 * i);
+    }
   }
 
   // testshowVisited() {

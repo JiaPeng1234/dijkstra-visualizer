@@ -53,8 +53,38 @@
   }
   100% {
     transform: scale(1);
-    border: 0.1px solid white;
+    border: 1px solid white;
     background-color: deeppink;
+  }
+}
+
+.node-shortestpath {
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation-name: visualizingPath;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes visualizingPath {
+  0% {
+    transform: scale(0.3);
+    background-color: rgb(252, 209, 20);
+  }
+  50% {
+    background-color: rgb(252, 209, 20);
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: rgb(252, 209, 20);
+  }
+  100% {
+    transform: scale(1);
+    border: 1px solid white;
+    background-color: rgb(252, 209, 20);
   }
 }
 /* .two {

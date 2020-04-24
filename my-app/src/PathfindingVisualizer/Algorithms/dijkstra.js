@@ -6,6 +6,10 @@ export function dijkstra(startNode, finishNode, allNodes) {
   const Heap = [startNode];
   const visited = [];
   while (true) {
+    if (Heap.length == 0) {
+      visited.push(visited[visited.length - 1]);
+      return visited;
+    }
     heapsort(Heap);
     const cur = Heap.shift();
     if (cur.isVisited || cur.isWall) continue;
@@ -34,8 +38,7 @@ function getCurNeighbors(cur, allNodes) {
   if (col > 0) neighbors.push(allNodes[row][col - 1]);
   if (row < allNodes.length - 1) neighbors.push(allNodes[row + 1][col]);
   if (col < allNodes[0].length - 1) neighbors.push(allNodes[row][col + 1]);
-  // neighbors = neighbors.filter((a) => !a.isVisited);
-  return neighbors;
+  return neighbors.filter((neighbor) => !neighbor.isVisited);
 }
 
 // function deepCopyAllNodes(grid) {
@@ -50,4 +53,12 @@ function getCurNeighbors(cur, allNodes) {
 //   return newGrid;
 // }
 
-export function getShortestPath(finishNode) {}
+export function findShortestPath(finishNode) {
+  if (finishNode.preciousnode == null) return [];
+  const shortestPathNodes = [finishNode];
+  while (true) {
+    if (shortestPathNodes[0].isStart) return shortestPathNodes;
+    const pathHead = shortestPathNodes[0];
+    shortestPathNodes.unshift(pathHead.preciousnode);
+  }
+}
