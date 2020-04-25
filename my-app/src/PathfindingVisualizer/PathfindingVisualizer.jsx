@@ -40,8 +40,8 @@ export default class PathfindingVisualizer extends Component {
       if (i == visitedNodeInorder.length - 1) {
         console.log("finished!");
       } else {
+        const { col, row } = visitedNodeInorder[i];
         setTimeout(() => {
-          const { col, row } = visitedNodeInorder[i];
           nodes[row][col] = visitedNodeInorder[i];
           console.log(i);
           this.setState({ nodes });
