@@ -1,7 +1,4 @@
 export function dijkstra(startNode, finishNode, allNodes) {
-  // const copyAllNodes = deepCopyAllNodes(allNodes);
-  // const copyStartNode = copyAllNodes[startNode.row][startNode.col];
-  // const copyFinishNode = copyAllNodes[finishNode.row][finishNode.col];
   startNode.distance = 0;
   const Heap = [startNode];
   const visited = [];
@@ -15,20 +12,22 @@ export function dijkstra(startNode, finishNode, allNodes) {
     if (cur.isVisited || cur.isWall) continue;
     cur.isVisited = true;
     visited.push(cur);
-    if (cur == finishNode) {
-      return visited;
-    }
-    const curNeighbors = getCurNeighbors(cur, allNodes);
-    for (const neighbor of curNeighbors) {
-      neighbor.distance = cur.distance + 1;
-      neighbor.preciousnode = cur;
-      Heap.push(neighbor);
-    }
+    if (cur == finishNode) return visited;
+    updateUnvisitedNeighbors(cur, allNodes, Heap);
   }
 }
 
 function heapsort(unvisitedNodes) {
   unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
+}
+
+function updateUnvisitedNeighbors(cur, allNodes, Heap) {
+  const curNeighbors = getCurNeighbors(cur, allNodes);
+  for (const neighbor of curNeighbors) {
+    neighbor.distance = cur.distance + 1;
+    neighbor.preciousnode = cur;
+    Heap.push(neighbor);
+  }
 }
 
 function getCurNeighbors(cur, allNodes) {
@@ -41,18 +40,6 @@ function getCurNeighbors(cur, allNodes) {
   return neighbors.filter((neighbor) => !neighbor.isVisited);
 }
 
-// function deepCopyAllNodes(grid) {
-//   const newGrid = [];
-//   for (const row of grid) {
-//     const newGridRow = [];
-//     for (const node of row) {
-//       newGridRow.push({ ...node });
-//     }
-//     newGrid.push(newGridRow);
-//   }
-//   return newGrid;
-// }
-
 export function findShortestPath(finishNode) {
   if (finishNode.preciousnode == null) return [];
   const shortestPathNodes = [finishNode];
@@ -62,3 +49,15 @@ export function findShortestPath(finishNode) {
     shortestPathNodes.unshift(pathHead.preciousnode);
   }
 }
+
+// const deepCopyAllNodes = (nodes) => {
+//   const newNodes = [];
+//   for (const row of nodes) {
+//     const newNodesRow = [];
+//     for (const node of row) {
+//       newNodesRow.push({ ...node });
+//     }
+//     newNodes.push(newNodesRow);
+//   }
+//   return newNodes;
+// };
