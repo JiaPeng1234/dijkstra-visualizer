@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project aim to visualize the prozess of dijkstra algorithm on a bunch of grids, it's good practise for javascript and react beginners. Final effect as following:
 
-[]!(dijkstraVisualizer.gif)
+![alt text](dijkstraVisualizer.gif)
 
 ## Available Scripts
 
