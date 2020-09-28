@@ -3,7 +3,7 @@ export function dijkstra(startNode, finishNode, allNodes) {
   const Heap = [startNode];
   const visited = [];
   while (true) {
-    if (Heap.length == 0) {
+    if (Heap.length === 0) {
       visited.push(visited[visited.length - 1]);
       return visited;
     }
@@ -12,7 +12,7 @@ export function dijkstra(startNode, finishNode, allNodes) {
     if (cur.isVisited || cur.isWall) continue;
     cur.isVisited = true;
     visited.push(cur);
-    if (cur == finishNode) return visited;
+    if (cur === finishNode) return visited;
     updateUnvisitedNeighbors(cur, allNodes, Heap);
   }
 }
