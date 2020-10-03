@@ -1,3 +1,78 @@
-.grid {
-  margin: 100px 0 0;
+.toggle {
+  /* background-color: rgba(0, 211, 158, 0.671); */
+  background: rgba(0, 211, 158, 0.8) !important;
+  font-size: 1.1em !important;
+  border-color: rgb(57, 197, 157) !important;
+  font-weight: 600 !important;
+  font-family: 'Ubuntu', sans-serif !important;
+  height: 40px;
+  width: 300px;
+  text-align: center;
+  z-index: 999;
+  position: relative;
+  top: 35px;
+  opacity: 1;
 }
+
+.toggle:hover {
+  background-color: rgba(10, 235, 179, 0.897) !important;
+  border-color: rgba(10, 235, 179, 0.897) !important;
+}
+
+.btn-reset {
+  background-color: rgba(250, 65, 9, 0.822) !important;
+  border-color: rgba(250, 65, 9, 0.822) !important;
+  z-index: 999 !important;
+  position: relative !important;
+  top: 37px;
+  opacity: 1;
+  margin-right: 15px;
+  transition-duration: 0.4s !important;
+}
+
+.btn-reset:hover {
+  /* transform: scale(1.4); */
+  background-color:  rgba(253, 0, 0, 0.9) !important;
+  border-color: rgba(253, 0, 0, 0.9) !important;
+  transform: rotate(150deg);
+  transition: all 0.7s ease 0s !important;
+  /* z-index: 999 !important;
+  position: relative !important; */
+}
+
+.icon-reset {
+  position: relative;
+  width: 29px;
+  height: 18px;
+  left: -3px;
+  fill: white;
+  bottom: -1px;
+  /* vertical-align: -0.5em; */
+}
+
+.legend-container {
+  margin-top: 35px;
+}
+
+.grid {
+  position: relative;
+  top: 38px;
+}
+
+.grid-container {
+  width: 100%;
+  height: 88%;
+  position: fixed;
+  top: 12%;
+  z-index: 2;
+  background-color: white;
+  opacity: 0.89;
+}
+
+/* :global(.ant-btn-primary) {
+  background-color: var(black);
+  &:hover {
+    background-color: var(pink) !important;
+    border-color: var(pink) !important;
+  }
+} */

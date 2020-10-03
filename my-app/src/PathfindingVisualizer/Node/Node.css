@@ -17,7 +17,7 @@
   background-color: rgb(126, 63, 189); */
   animation-name: setStart;
   animation-duration: 0.2s;
-  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-timing-function: ease;
   animation-delay: 0;
   animation-iteration-count: 1;
   animation-direction: alternate;
@@ -29,7 +29,7 @@
   background-color: rgba(223, 65, 65, 0.78); */
   animation-name: setStop;
   animation-duration: 0.2s;
-  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-timing-function: ease;
   animation-delay: 0;
   animation-iteration-count: 1;
   animation-direction: alternate;
@@ -40,8 +40,8 @@
   /* border: 0;
   background-color: rgba(14, 19, 88, 0.781); */
   animation-name: setWall;
-  animation-duration: 0.2s;
-  animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
   animation-delay: 0;
   animation-iteration-count: 1;
   animation-direction: alternate;
@@ -62,20 +62,29 @@
 @keyframes visitingNode {
   0% {
     transform: scale(0.3);
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
+    background-color: rgba(0, 0, 66, 0.75);
+    opacity: 1;
     border-radius: 100%;
   }
   50% {
-    background-color: rgba(65, 75, 223, 0.863);
+    /* background-color: rgba(65, 75, 223, 0.863); */
+    background-color: rgba(17, 104, 217, 0.75);
+    opacity: 0.8;
   }
   75% {
     transform: scale(1.2);
-    background-color: slateblue;
+    /* background-color: slateblue; */
+    background-color: rgba(0, 217, 159, 0.75);
+    opacity: 1;
   }
   100% {
     transform: scale(1);
     border: 1px solid white;
-    background-color: deeppink;
+    /* background-color: rgba(55, 201, 169); */
+    background-color: rgba(0, 190, 218, 0.75);
+    /* background-color: deeppink; */
+    opacity: 0.73;
   }
 }
 
@@ -93,44 +102,45 @@
 @keyframes visualizingPath {
   0% {
     transform: scale(0.3);
-    background-color: rgb(252, 209, 20);
+    background-color: rgb(252, 170, 20);
   }
   50% {
-    background-color: rgb(252, 209, 20);
+    background-color: rgb(252, 170, 20);
   }
   75% {
     transform: scale(1.2);
-    background-color: rgb(252, 209, 20);
+    background-color: rgb(252, 170, 20);
   }
   100% {
     transform: scale(1);
     border: 1px solid white;
-    background-color: rgb(252, 209, 20);
+    background-color: rgb(252, 214, 20);
   }
 }
 
 @keyframes setWall {
   0% {
-    transform: scale(0.95);
-    background-color: rgba(14, 19, 88, 0.781);
+    transform: scale(0.98);
+    background-color: rgba(16, 21, 95, 0.781);
   }
   50% {
-    background-color: rgba(14, 19, 88, 0.781);
+    transform: scale(1.2);
+    background-color: rgba(16, 21, 95, 0.781);
   }
-  75% {
-    transform: scale(1.1);
-    background-color: rgba(14, 19, 88, 0.781);
+  60% {
+    transform: scale(1.4);
+    background-color: rgba(16, 21, 95, 0.781);
   }
   100% {
     transform: scale(1);
     border: 0;
-    background-color: rgba(14, 19, 88, 0.781);
+    background-color: rgba(16, 21, 95, 0.781);
   }
 }
 
 @keyframes setStart {
   0% {
-    transform: scale(0.95);
+    transform: scale(1);
     background-color: rgb(126, 63, 189);
   }
   50% {
