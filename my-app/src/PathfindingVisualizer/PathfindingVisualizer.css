@@ -4,8 +4,8 @@
   font-size: 1.1em !important;
   border-color: rgb(57, 197, 157) !important;
   font-weight: 600 !important;
-  font-family: 'Ubuntu', sans-serif !important;
-  height: 40px;
+  font-family: "Ubuntu", sans-serif !important;
+  height: 32px !important;
   width: 300px;
   text-align: center;
   z-index: 999;
@@ -32,7 +32,7 @@
 
 .btn-reset:hover {
   /* transform: scale(1.4); */
-  background-color:  rgba(253, 0, 0, 0.9) !important;
+  background-color: rgba(253, 0, 0, 0.9) !important;
   border-color: rgba(253, 0, 0, 0.9) !important;
   transform: rotate(150deg);
   transition: all 0.7s ease 0s !important;
@@ -52,6 +52,8 @@
 
 .legend-container {
   margin-top: 35px;
+  position: relative;
+  /* left: -2.5em; */
 }
 
 .grid {
@@ -69,6 +71,59 @@
   opacity: 0.89;
 }
 
+.tutorial-affix {
+  float: left !important;
+  /* margin-left: -75px !important; */
+  /* margin-left: -45px; */
+}
+
+.tutorial-btn:hover {
+  left: -60px !important;
+  border-color: rgba(0, 195, 255, 0.911) !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.17) !important;
+}
+
+.tutorial-btn:hover .tutorial-innerbtn {
+  /* background-color: rgba(0, 211, 158, 0.8) !important; */
+  background-color: rgba(0, 195, 255, 0.911) !important;
+  opacity: 0.8 !important;
+}
+
+.tutorial-btn {
+  position: relative !important;
+  width: 120px !important;
+  height: 40px !important;
+  left: -75px !important;
+  border-color: rgb(217, 217, 217) !important;
+  /* height: 20px !important; */
+}
+
+.tutorial-innerbtn {
+  position: absolute !important;
+  border-radius: 100%;
+  color: white;
+  background-color: rgba(50, 153, 250, 0.897);
+  height: 30px !important;
+  width: 30px !important;
+  top: 4px !important;
+  right: 5px !important;
+}
+
+.tutorial-icon {
+  font-size: 1.3em;
+  position: absolute !important;
+  top: 5px;
+  left: 5px;
+}
+/* .tutorial-affix:hover,
+.tutorial-affix:focus .tutorial-btn {
+  letter-spacing: 20px !important;
+}
+
+.tutorial-affix:hover,
+.tutorial-affix:focus {
+  margin-left: -25px !important;
+} */
 /* :global(.ant-btn-primary) {
   background-color: var(black);
   &:hover {

@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "react-svg": "^11.0.42",
     "redux-devtools": "^3.7.0"
   }
 }

@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import Node from "./Node/Node.jsx";
 import Legend from "./Legend/Legend.jsx";
 import IconLegend from "./Legend/Icon-legend.jsx";
-import Tutorial from "./Tutorial/Tutorial.jsx";
-import { setStartNode, setStopNode, actionMouseUp } from "./Node/Node.jsx";
+import Tutorial, { setVisibleTrue } from "./Tutorial/Tutorial.jsx";
+import Node, {
+  setStartNode,
+  setStopNode,
+  actionMouseUp,
+} from "./Node/Node.jsx";
 import NodeContainer from "./Node/NodeContainer.jsx";
 import "./PathfindingVisualizer.css";
 import { dijkstra, findShortestPath } from "./Algorithms/dijkstra.js";
 import store from "./store";
 import "antd/dist/antd.css";
-import { Button } from "antd";
-// import { ReloadOutlined } from "@ant-design/icons";
+import { Button, Affix, Tooltip } from "antd";
+import { FileTextOutlined } from "@ant-design/icons";
 
 const START_NODE_COL = 15;
 const START_NODE_ROW = 10;
@@ -33,6 +36,7 @@ export default class PathfindingVisualizer extends Component {
       }
       this.nodeRefs.push(refRow);
     }
+    this.tutorialRef = React.createRef();
   }
 
   componentDidMount() {
@@ -94,6 +98,11 @@ export default class PathfindingVisualizer extends Component {
     this.nodeRefs[row][col].current.setState({});
   }
 
+  activeTutorial() {
+    setVisibleTrue();
+    this.tutorialRef.current.setState({ pageNo: 1 });
+  }
+
   resetNodes() {
     const { nodes } = this.state;
     initStoreNodes(nodes);
@@ -125,7 +134,7 @@ export default class PathfindingVisualizer extends Component {
     const nodes = store.getState().nodes;
     return (
       <>
-        {/* <Tutorial></Tutorial> */}
+        <Tutorial ref={this.tutorialRef}></Tutorial>
 
         <div id="container">
           <div id="output"></div>
@@ -159,31 +168,33 @@ export default class PathfindingVisualizer extends Component {
         </Button>
 
         <div className="grid-container">
+          <Affix offsetTop={130} className="tutorial-affix">
+            <Tooltip title="Tutorial" placement="right" mouseEnterDelay="0.2">
+              <Button
+                type="default"
+                shape="round"
+                size="large"
+                className="tutorial-btn"
+                onClick={() => {
+                  this.activeTutorial();
+                }}
+              >
+                <div className="tutorial-innerbtn">
+                  <FileTextOutlined className="tutorial-icon" />
+                </div>
+              </Button>
+            </Tooltip>
+          </Affix>
           <div className="legend-container">
-            <Legend
-              legendClass="legend-start"
-              context="Start Node"
-            />
-            <Legend
-              legendClass="legend-stop"
-              context="Stop Node"
-            />
-            <Legend
-              legendClass="legend-item"
-              context="Unvisited Node"
-            />
-            <Legend
-              legendClass="legend-visited"
-              context="Visited Node"
-            />
+            <Legend legendClass="legend-start" context="Start Node" />
+            <Legend legendClass="legend-stop" context="Stop Node" />
+            <Legend legendClass="legend-item" context="Unvisited Node" />
+            <Legend legendClass="legend-visited" context="Visited Node" />
             <Legend
               legendClass="legend-shortestpath"
               context="Shortest-path Node"
             />
-            <Legend
-              legendClass="legend-wall"
-              context="Wall"
-            />
+            <Legend legendClass="legend-wall" context="Wall" />
             <IconLegend
               LegendIconClass="legend-reset"
               svg="#icon-Reset"

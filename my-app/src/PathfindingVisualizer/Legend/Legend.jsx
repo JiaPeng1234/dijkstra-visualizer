@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./Legend.css";
 
 export default class Legend extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const { legendClass, context } = this.props;

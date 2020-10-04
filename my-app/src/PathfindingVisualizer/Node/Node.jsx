@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "./Node.css";
 import store from "../store";
-// import { connect } from "react-redux";
-// TODO: github要保留以前的代码，改之后要新建一个分支
-// TODO: 试一下clement tutorial的performance，全局渲染会怎么样
-// TODO: 起终点交叉的问题解决掉;加上图例;还有一个问题，为什么不可以在willmount下面初次渲染;修复起点终点墙问题；改好局部渲染；去除鼠标变成禁止号的bug; 加上基本背景；使得起点和终点可以移动；refine结束之后怎么办；；加上说明；refine page size; 再加上一个reset键位; 给点击添加墙壁加上动画
+
 export default class Node extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +24,7 @@ export default class Node extends Component {
       mouseClickTrue();
       updateToggledWall(row, col);
     }
-    if(!store.getState().visitingAnimation){
+    if (!store.getState().visitingAnimation) {
       this.setState({});
     }
   }
@@ -136,7 +133,7 @@ export default class Node extends Component {
           }}
         ></div>
       );
-    } else if(store.getState().visitingAnimation){
+    } else if (store.getState().visitingAnimation) {
       return <div id={`node-${col}-${row}`} className="node-visited"></div>;
     }
   }
