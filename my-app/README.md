@@ -1,6 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project aim to visualize the prozess of dijkstra algorithm on a bunch of grids, you can access the deployed online website here (use Google Chrome!): http://jiapeng.tk/dijkstra/. Final effect as following:
+This project aim to visualize the prozess of dijkstra algorithm on a bunch of grids.  
+
+You can access the deployed online website here (use Google Chrome!): http://jiapeng.tk/dijkstra/.  
+
+Final effect as following:
 
 ![gifview](example-pathfinding.gif)
 
