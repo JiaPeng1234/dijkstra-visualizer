@@ -6,7 +6,7 @@ You can access the deployed online website here (use Google Chrome!): http://jia
 
 Final effect as following:
 
-![gifview](example-pathfinding.gif)
+![gifview](./my-app/example-pathfinding.gif)
 
 ## Available Scripts
 
