@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project aim to visualize the prozess of dijkstra algorithm on a bunch of grids.  
 
-You can access the deployed online website here (use Google Chrome!): http://jiapeng.tk/dijkstra/.  
+You can access the deployed online website here (use Google Chrome!): https://peng.bio/dijkstra/.  
 
 Final effect as following:
 
